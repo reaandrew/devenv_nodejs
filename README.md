@@ -41,3 +41,11 @@ Version 1.8 Open JDK
 https://hub.docker.com/r/oddpoet/alpine-base/~/dockerfile/
 https://blog.james-carr.org/build-docker-images-with-packer-and-ansible-3f40b734ef4f
 https://github.com/JAremko/alpine-vim/blob/master/Dockerfile
+
+
+### Useful commands
+
+Sync Date
+```
+sudo ntpd -f /etc/ntpd.conf -s
+```
