@@ -5,3 +5,6 @@
       user: vagrant
   roles:
   - nodejs
+  - docker
+  become: yes
+  become_method: sudo

@@ -1,5 +1,6 @@
 module.exports = {
   environments: ['node'],
+  importDevDependencies: true,
   ignorePackagePrefixes: ['lodash.'],
   declarationKeyword: 'import',
   logLevel: 'debug',

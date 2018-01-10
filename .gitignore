@@ -1,2 +1,5 @@
 packer_1.1.3_linux_amd64.zip
 .vagrant
+devenv_nodejs_0.2.box
+devenv_nodejs_0.3.box
+ansible/roles/docker

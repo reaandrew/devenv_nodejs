@@ -1,44 +1,40 @@
 # vim:ft=ansible:
 ---
 - block:
+  - name: Create the directory for the nodejs work
+    file:
+      path: /opt/nodejs
+      state: directory
+      mode: 0755
+  - name: Download primer the package manager for Node.js
+    get_url: 
+      url: http://deb.nodesource.com/setup_6.x
+      dest: /opt/nodejs/setup_6.x
+  - name: Prime the package manager for Node.js
+    command: bash setup_6.x
+    args:
+      chdir: /opt/nodejs
   - name: Install Node.js
-    apk: 
+    apt: 
       name: "{{ item }}"
       state: installed 
       update_cache: yes
     with_items:
     - nodejs
-  - name: Install node.js packages globally.
-    npm:
-      name: "{{ item }}"
-      global: yes
-    with_items:
-    - js-beautify
-    - mocha
-    - eslint
-    - eslint_d
-    - eslint-plugin-babel
-    - eslint-config-airbnb
-    - eslint-plugin-import
-    - eslint-plugin-jsx-a11y
-    - eslint-plugin-react    
-    - eslint-plugin-mocha  
-    - babel-eslint
-    - import-js
   - name: Install base plugins
     become: no
     git: 
       repo: "https://github.com/{{ item.org }}/{{ item.repo }}.git"
       dest: "/home/{{ os.user }}/.vim/pack/plugins/start/{{ item.repo }}"
     with_items:
-      - org: pangloss
-        repo: vim-javascript
       - org: ternjs
         repo: tern_for_vim
       - org: ruanyl
         repo: vim-fixmyjs
       - org: Galooshi
         repo: vim-import-js
+      - org: pangloss
+        repo: vim-javascript
   - name: Configure Tern
     become: no
     shell: |
@@ -56,5 +52,26 @@
   - name: tern-config for JAVASCRIPT
     copy: src=template.tern-config.js dest="/home/{{ os.user }}/.tern-config.js" owner="{{ os.user }}" group="{{ os.user }}" mode=0644
     become: no
+  - name: Install node.js packages globally.
+    npm:
+      name: "{{ item }}"
+      global: yes
+    with_items:
+    - mocha
+    - eslint
+    - eslint_d
+    - eslint-plugin-jsx-a11y
+    - eslint-plugin-import
+    - eslint-plugin-react    
+    - eslint-plugin-node
+    - eslint-plugin-babel
+    - eslint-config-airbnb
+    - eslint-plugin-mocha  
+    - eslint-config-airbnb-base
+    - babel-eslint
+    - import-js
+    - js-beautify
+    become: yes
+    become_method: sudo
   become: yes
   become_method: sudo
