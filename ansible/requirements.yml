@@ -1,3 +1,6 @@
 ---
 - src: geerlingguy.docker
   name: docker
+
+- src: manala.phantomjs
+  name: phantomjs

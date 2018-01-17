@@ -1,8 +1,12 @@
 module.exports = {
-  environments: ['node'],
+  environments: [
+    'node',
+    'mocha',
+    'browser',
+  ],
   importDevDependencies: true,
   ignorePackagePrefixes: ['lodash.'],
-  declarationKeyword: 'import',
+  declarationKeyword: 'const',
   logLevel: 'debug',
   excludes: [
     './build/**',

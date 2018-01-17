@@ -71,6 +71,7 @@
     - babel-eslint
     - import-js
     - js-beautify
+    - babel-cli
     become: yes
     become_method: sudo
   become: yes
