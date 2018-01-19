@@ -7,5 +7,10 @@
   ],
   "env": {
     "mocha": true
+  },
+  "globals": {
+    "browser": true,
+    "$": true,
+    "$$": true
   }
 }
