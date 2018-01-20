@@ -1,7 +1,0 @@
----
-
-file:
-  /etc/phantomjs/config.json:
-    exists: true
-    contains:
-      - '"webdriver": 1234'
